@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg fixed-top site-nav">
   <div class="container">
-    <a class="navbar-brand" href="#accueil"><img src="img/logo.jpg" alt="Logo FBHSF" height="46"></a>
+    <a class="navbar-brand" href="#accueil"><img src="img/logo.jpg" alt="Logo FBHSF" height="64"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
@@ -34,13 +34,14 @@
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-7">
+        <div class="hero-brand"><img src="img/logo.jpg" alt="Logo de la Fondation Bouquet Hélène" height="104"><span>Handicap Sans Frontières</span></div>
         <h1>Votre fondation humanitaire dédiée à l’inclusion et à la santé mentale</h1>
         <p class="lead">La Fondation Bouquet Hélène – Handicap Sans Frontières accompagne les personnes en situation de handicap et leurs familles, pour que chacun trouve sa place dans la société.</p>
         <a class="btn btn-gold btn-lg me-2 mb-2" href="#agir">Soutenir la fondation</a>
         <a class="btn btn-outline-light btn-lg mb-2" href="#mission">Découvrir notre mission</a>
       </div>
       <div class="col-lg-5">
-        <div class="plaque-frame"><img src="img/plaque.jpg" class="img-fluid" alt="Plaque de la Fondation Bouquet Hélène"></div>
+        <div class="hero-visual"><img src="img/1.jpg" class="img-fluid" alt="Activité d’inclusion menée par la fondation"><div class="hero-visual-caption"><i class="bi bi-heart-fill"></i><span>Ensemble, chaque personne compte</span></div></div>
       </div>
     </div>
   </div>
@@ -176,11 +177,12 @@
       <div class="col-6 col-md-4 col-lg-3"><figure class="galerie-fig mb-0"><button type="button" class="galerie-item" data-index="17" data-title="Inclusion" data-desc="Favoriser l’intégration sociale, scolaire et professionnelle des personnes en situation de handicap." aria-label="Agrandir la photo 17 : Inclusion"><img src="img/17.jpg" alt="Inclusion – photo 17" loading="lazy"></button><figcaption><strong>Inclusion</strong><span>Favoriser l’intégration sociale, scolaire et professionnelle des personnes en situation de handicap.</span></figcaption></figure></div>
     </div>
 
-    <h3 class="h4 mb-3">En vidéo</h3>
-    <div class="row g-4">
-      <div class="col-md-6 video-card"><video controls preload="metadata" playsinline><source src="img/1.mp4" type="video/mp4">Votre navigateur ne lit pas cette vidéo.</video></div>
-      <div class="col-md-6 video-card"><video controls preload="metadata" playsinline><source src="img/2.mp4" type="video/mp4">Votre navigateur ne lit pas cette vidéo.</video></div>
+    <div class="event-gallery mt-5">
+      <h2 class="section-title mb-2">Galerie par événement</h2>
+      <p class="mb-4">Les photos et vidéos sont regroupées selon les dossiers de nos actions.</p>
+      <div id="eventGallery"></div>
     </div>
+
   </div>
 </section>
 
@@ -228,7 +230,7 @@
     <div class="row g-5">
       <div class="col-lg-5">
         <h2 class="section-title mb-3">Contact</h2>
-        <p>Appelez-nous ou écrivez-nous, nous répondons dès que possible.</p>
+        <p>Appelez-nous ou envoyez-nous un message WhatsApp, nous répondons dès que possible.</p>
         <p class="mb-2"><a class="tel" href="tel:+237659965357"><i class="bi bi-telephone-fill"></i> 6 59 96 53 57 <small>Orange</small></a></p>
         <p class="mb-3"><a class="tel" href="tel:+237683578082"><i class="bi bi-telephone-fill"></i> 6 83 57 80 82 <small>MTN</small></a></p>
         <a class="btn btn-brand" href="https://www.facebook.com/61579541222488" target="_blank" rel="noopener"><i class="bi bi-facebook"></i> Notre page Facebook</a>
@@ -237,11 +239,11 @@
         <form id="contactForm" class="card-form" novalidate>
           <div class="row g-3">
             <div class="col-md-6"><label class="form-label" for="nom">Nom</label><input class="form-control" id="nom" required><div class="invalid-feedback">Indiquez votre nom.</div></div>
-            <div class="col-md-6"><label class="form-label" for="email">E-mail</label><input type="email" class="form-control" id="email" required><div class="invalid-feedback">Indiquez une adresse e-mail valide.</div></div>
+            <div class="col-md-6"><label class="form-label" for="telephone">Téléphone</label><input type="tel" class="form-control" id="telephone" required><div class="invalid-feedback">Indiquez votre numéro de téléphone.</div></div>
             <div class="col-12"><label class="form-label" for="objet">Objet</label>
               <select class="form-select" id="objet"><option>Information</option><option>Bénévolat</option><option>Don</option><option>Partenariat</option></select></div>
             <div class="col-12"><label class="form-label" for="message">Message</label><textarea class="form-control" id="message" rows="5" required></textarea><div class="invalid-feedback">Écrivez votre message.</div></div>
-            <div class="col-12"><button class="btn btn-brand btn-lg" type="submit">Envoyer le message</button></div>
+            <div class="col-12"><button class="btn btn-whatsapp btn-lg" type="submit"><i class="bi bi-whatsapp"></i> Envoyer sur WhatsApp</button></div>
           </div>
         </form>
       </div>
@@ -260,6 +262,130 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var events = [
+    {name: 'Back to School Yaounde', folder: 'BACK TO SCHOOL YAOUNDE', photos: [
+      '30c8a775-b114-4b73-be95-a2e5044b3392.jpg',
+      'WhatsApp Image 2026-11-07 at 12.20.15 (2).jpeg',
+      'WhatsApp Image 2026-11-07 at 12.20.16 (1).jpeg',
+      'WhatsApp Image 2026-11-07 at 12.20.16.jpeg',
+      'WhatsApp Image 2026-11-07 at 12.20.22.jpeg',
+      'a9146818-f19c-4a0f-b42a-9efdc67bfa08.jpg',
+      'f084efd9-67a3-42ac-a5f8-e54fb4d9a1ce.jpg',
+      'f4150e5f-7ddc-4918-9bb1-fd1eac2fc244.jpg',
+      'facf9161-2175-4bfd-a85d-647fda49bbfa.jpg'
+    ], videos: [
+      'WhatsApp Video 2026-11-07 at 12.20.21.mp4',
+      'WhatsApp Video 2026-11-07 at 12.20.34.mp4',
+      'WhatsApp Video 2026-11-07 at 12.20.40.mp4'
+    ]},
+    {name: 'Back to School Bertoua', folder: 'BACK TO SCHOOL BERTOUA', photos: [
+      '0a47c7d0-40f5-4c47-a26f-5e289a9bc529.jpg',
+      '3b10d3ed-842a-4dcd-9c11-056e0fca03b8.jpg',
+      '5cba892f-8a77-4f23-981e-63297d8f5c2f.jpg',
+      '9a48336b-6449-4141-9998-0892f0fe8ccc.jpg',
+      '36cc3f2e-ab9c-44d0-a03b-6fe36df142c5.jpg',
+      '56525bda-771f-496f-8427-fae58f38ca33.jpg',
+      'WhatsApp Image 2026-11-07 at 12.20.15 (1).jpeg',
+      'WhatsApp Image 2026-11-07 at 12.20.15.jpeg',
+      'f1206196-3d53-4b29-af9f-07118e9ddcea.jpg'
+    ], videos: []},
+    {name: 'Soiree reseautage', folder: 'SOIREE RESEAUTAGE', photos: [
+      '9fd073b4-239f-4ec3-9fbc-1ab6643d9166.jpg',
+      '29c26caa-7489-4b2d-8fc2-7dcb2d28588a.jpg',
+      '660f9872-9c2e-4a61-bebc-cd94c9b8ffaf.jpg',
+      '69345be2-1b3d-45f0-bde0-ff01581651e3.jpg',
+      'b7702a5f-86e0-4e1b-b46b-a0060770ae89.jpg',
+      'd0ef2adb-9ca5-49e9-98b1-ed44f9c5a521.jpg'
+    ], videos: [
+      'WhatsApp Video 2026-11-07 at 12.24.54.mp4',
+      'WhatsApp Video 2026-11-07 at 12.25.03.mp4'
+    ]},
+    {name: "Marche sportive - Journee mondiale de l'autisme", folder: "MARCHE SPORTIVE JOURNEE MONDIALE DE L'AUTISME", photos: [
+      '2b3da362-5c5f-4161-8ccf-1b808a555b2b.jpg',
+      '7a7e3ae4-c0d7-4085-809d-c0bd4cad8a40.jpg',
+      '0324b7eb-8b9b-4b05-9f74-854d58dcff3f.jpg',
+      'WhatsApp Image 2026-11-07 at 12.20.41 (1).jpeg',
+      'WhatsApp Image 2026-11-07 at 12.20.41.jpeg',
+      'a523fa6b-f7f8-42d5-8419-0d1a5c68e11d.jpg',
+      'dc9ad330-31fb-4ee3-bfa6-5f1f9218b2b4.jpg'
+    ], videos: []},
+    {name: 'Marche sportive Octobre Rose', folder: 'MARCHE SPORTIVE OCTOBRE ROSE', photos: [
+      'WhatsApp Image 2026-11-07 at 12.18.53.jpeg',
+      'WhatsApp Image 2026-11-07 at 12.18.54 (1).jpeg',
+      'WhatsApp Image 2026-11-07 at 12.18.54 (2).jpeg',
+      'WhatsApp Image 2026-11-07 at 12.18.54.jpeg'
+    ], videos: ['WhatsApp Video 2026-11-07 at 12.19.39.mp4']},
+    {name: 'Reunions de planification', folder: 'REUNIONS DE PLANIFICATION', photos: [
+      '0ee432c1-9c94-4171-8644-5120eb5abcd7.jpg',
+      '24ef3def-6fa7-4899-936d-6ba984618832.jpg',
+      '5159fc9d-6f1d-4ce6-98eb-0e337b679061.jpg',
+      'df28ebaf-6446-4d97-91b2-c48b2fc46c05.jpg',
+      'ec780c17-e63e-45d2-ad4d-5fa96d77e4f8.jpg'
+    ], videos: []},
+    {name: 'Conference - Journee internationale de la surdite', folder: 'CONFERENCE JOURNEE INTERNATIONALE DE LA SURDITE', photos: [], videos: [
+      'WhatsApp Video 2026-11-07 at 12.19.49.mp4',
+      'WhatsApp Video 2026-11-07 at 12.20.02.mp4',
+      'WhatsApp Video 2026-11-07 at 12.20.13.mp4'
+    ]}
+  ];
+
+  var gallery = document.getElementById('eventGallery');
+  events.forEach(function (event) {
+    var section = document.createElement('section');
+    section.className = 'event-section';
+    var heading = document.createElement('h3');
+    heading.className = 'h4 mb-3';
+    heading.innerHTML = '<span>' + event.name + '</span><span class="event-count">' +
+      (event.photos.length + event.videos.length) + ' medias</span>';
+    section.appendChild(heading);
+
+    var photos = document.createElement('div');
+    photos.className = 'row g-3';
+    event.photos.forEach(function (file) {
+      var src = encodeURI(event.folder + '/' + file);
+      var col = document.createElement('div');
+      col.className = 'col-6 col-md-4 col-lg-3';
+      col.innerHTML = '<div class="event-media"><button type="button" class="event-photo" data-src="' +
+        src.replace(/'/g, '%27') + '" data-title="' + event.name + '" aria-label="Agrandir une photo de ' +
+        event.name + '"><img src="' + src + '" alt="' + event.name + '" loading="lazy"></button></div>';
+      photos.appendChild(col);
+    });
+    section.appendChild(photos);
+
+    if (event.videos.length) {
+      var videoTitle = document.createElement('h4');
+      videoTitle.className = 'event-subtitle mt-4 mb-3';
+      videoTitle.textContent = 'Videos de l’evenement';
+      section.appendChild(videoTitle);
+    }
+    var videos = document.createElement('div');
+    videos.className = 'row g-3 event-video-grid';
+    event.videos.forEach(function (file) {
+      var src = encodeURI(event.folder + '/' + file);
+      var col = document.createElement('div');
+      col.className = 'col-md-6';
+      col.innerHTML = '<div class="event-media"><video controls preload="metadata" playsinline><source src="' +
+        src + '" type="video/mp4"></video></div>';
+      videos.appendChild(col);
+    });
+    section.appendChild(videos);
+    gallery.appendChild(section);
+  });
+
+  var modal = new bootstrap.Modal(document.getElementById('lightbox'));
+  document.querySelectorAll('.event-photo').forEach(function (button) {
+    button.addEventListener('click', function () {
+      document.getElementById('lbImg').src = button.dataset.src;
+      document.getElementById('lbImg').alt = button.dataset.title;
+      document.getElementById('lbTitle').textContent = button.dataset.title;
+      document.getElementById('lbDesc').textContent = '';
+      modal.show();
+    });
+  });
+})();
+</script>
 <script>
 (function(){
   var total=17,cur=1,modalEl=document.getElementById('lightbox'),

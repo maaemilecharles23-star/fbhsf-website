@@ -16,19 +16,19 @@ window.addEventListener('scroll', function () {
 });
 haut.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-// Formulaire : validation Bootstrap puis ouverture du client e-mail
-// TODO : remplacer EMAIL_FONDATION par l'adresse réelle (ou brancher Formspree / un script PHP)
-var EMAIL_FONDATION = 'contact@exemple.org';
+// Formulaire : validation Bootstrap puis ouverture d'une conversation WhatsApp
+var WHATSAPP_FONDATION = '237659965357';
 var form = document.getElementById('contactForm');
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   form.classList.add('was-validated');
   if (!form.checkValidity()) return;
-  var sujet = encodeURIComponent('[Site FBHSF] ' + document.getElementById('objet').value);
   var corps = encodeURIComponent(
+    'Bonjour FBHSF, je vous contacte depuis le site.\n\n' +
     'Nom : ' + document.getElementById('nom').value + '\n' +
-    'E-mail : ' + document.getElementById('email').value + '\n\n' +
+    'Téléphone : ' + document.getElementById('telephone').value + '\n' +
+    'Objet : ' + document.getElementById('objet').value + '\n\n' +
     document.getElementById('message').value
   );
-  window.location.href = 'mailto:' + EMAIL_FONDATION + '?subject=' + sujet + '&body=' + corps;
+  window.open('https://wa.me/' + WHATSAPP_FONDATION + '?text=' + corps, '_blank', 'noopener');
 });
