@@ -1,4 +1,4 @@
-// Année du pied de page
+// Année du pied de page emilio
 document.getElementById('annee').textContent = new Date().getFullYear();
 
 // Fermer le menu mobile après un clic sur un lien
